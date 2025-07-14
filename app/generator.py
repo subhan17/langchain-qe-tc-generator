@@ -1,5 +1,4 @@
 from itertools import chain
-
 from langchain_openai import ChatOpenAI
 from langchain_core.prompts import chatPromptTemplate
 import os
@@ -20,5 +19,5 @@ prompt = chatPromptTemplate(template)
 
 def generate_bdd(feature_description):
     chain = prompt | llm
-    response = chain.invoke({"feature_description": feature_description})
+    response = chain.invoke({"feature_description": feature_description}).content.strip()
     return response.content
