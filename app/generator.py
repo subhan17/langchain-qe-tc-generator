@@ -8,13 +8,13 @@ from dotenv import load_dotenv
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 
-llm = ChatOpenAI(model="gpt-4o", temperature=0.5, api_key=api_key)
+llm = ChatOpenAI(model="gpt-4.1", temperature=0.5, api_key=api_key)
 
 
 
 def generate_bdd(user_input):
     template = """
-    You are an expert QA engineer. Write **complete** Gherkin-style BDD test scenarios for the following requirement:
+    You are an expert QA engineer. Write all positive and negative Gherkin-style BDD test scenarios for the following story requirement:
       """+user_input
 
     prompt = ChatPromptTemplate(template)

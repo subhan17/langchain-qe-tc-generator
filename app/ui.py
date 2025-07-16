@@ -7,7 +7,11 @@ import os
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 st.set_page_config(page_title="AI Test Case Generator", layout="centered")
-st.title("AI-Powered BDD Test Case & Script Generator")
+st.markdown(
+    "<div style='text-align: center; font-size:18px; font-weight: bold;'>AI-Powered BDD Test Case & Script Generator</div>",
+    unsafe_allow_html=True
+)
+st.markdown("---")
 
 mode = st.radio("Select Input Mode", ["Paste Text", "Upload PDF"])
 
@@ -26,7 +30,7 @@ if st.button("Generate BDD Test Cases"):
     if not user_input.strip():
         st.warning("Please provide requirement text first.")
     else:
-        with st.spinner("Contacting GPT‑4 and building tests …"):
+        with st.spinner("Contacting GPT‑4.1 and building tests …"):
             bdd = generate_bdd(user_input)
             #Debug
             print("Input received:", user_input)
